@@ -1,0 +1,23 @@
+import random
+
+emotions = ['happy', 'sad', 'angry', 'surprised', 'excited', 'disgusted']
+selected_emotion = random.choice(emotions)
+
+print("Welcome to Guess the Emotion!")
+print("Try to guess the emotion I'm thinking of.")
+
+while True:
+    guess = input("Enter your guess: ").lower()
+
+    if guess == selected_emotion:
+        print("Congratulations! You guessed the emotion correctly!")
+        break
+    else:
+        similarity_score = sum([1 for x, y in zip(guess, selected_emotion) if x == y])
+        print(f"Sorry, that's not the correct emotion. You got {similarity_score} letters right.")
+
+    play_again = input("Would you like to play again? (yes/no): ").lower()
+    if play_again != "yes":
+        break
+
+print("Thank you for playing Guess the Emotion!")
